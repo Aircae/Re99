@@ -1,0 +1,115 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	min-height: 100vh;
+}
+
+.container {
+	display: flex;
+	min-height: 100vh;
+	position: relative;
+}
+
+.container h1 {
+	color: black;
+}
+
+.main-content {
+	flex: 1;
+	position: relative;
+}
+
+.background-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+}
+
+.blur-background {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	filter: blur(5px);
+}
+
+.content {
+	position: relative;
+	z-index: 1;
+	padding: 40px;
+	color: white;
+	text-align: center;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* 按钮样式 */
+.button {
+	margin-top: 20px;
+	/* 调整按钮与图片的距离 */
+}
+
+.button button {
+	background: linear-gradient(45deg, #8fd3f4, #6CC6CB);
+	/* 渐变背景 */
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 10px 5px;
+	cursor: pointer;
+	border-radius: 25px;
+	/* 圆角 */
+	transition: transform 0.3s, box-shadow 0.3s;
+	/* 添加过渡效果 */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	/* 添加阴影 */
+}
+
+.button button:hover {
+	transform: translateY(-2px);
+	/* 鼠标悬停时上浮 */
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	/* 增大阴影 */
+}
+
+.button button:active {
+	transform: translateY(0);
+	/* 点击时回到原位 */
+}
+
+.button a {
+	color: white;
+	/* 链接文字颜色 */
+	text-decoration: none;
+	/* 去掉下划线 */
+}
+
+#wx{
+	border-style: solid;
+	border-color: black;
+}
+
+@media (max-width: 768px) {
+	.blur-background {
+		width: 100%;
+		height: 100%;
+		filter: blur(5px);
+	}
+	body{
+		max-width: 768px;
+	}
+}

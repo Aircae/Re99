@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<title>下载</title>
+		<meta charset="UTF-8">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: Arial, sans-serif;
+				min-height: 100vh;
+			}
+
+			h1 {
+				text-align: center;
+				color: black;
+			}
+
+			a {
+				text-decoration: none;
+				color: black;
+			}
+
+			a:visited {
+				text-decoration: none;
+				color: black;
+			}
+
+			.sidebar-mask {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: rgba(0, 0, 0, 0.0);
+				z-index: 999;
+				transition: 0.3s;
+			}
+
+			@media (min-width: 769px) {
+				.sidebar.active {
+					left: 0;
+				}
+
+				/* 移除对遮罩层的干扰 */
+				.sidebar.active+.sidebar-mask {
+					display: none;
+				}
+			}
+
+			.container {
+				display: flex;
+				min-height: 100vh;
+				position: relative;
+			}
+
+			/* 共用侧边栏 */
+			.sidebar {
+				width: 250px;
+				background: rgba(255, 255, 255, 0.1);
+				padding: 20px;
+				position: fixed;
+				left: -250px;
+				height: 100vh;
+				transition: 0.3s;
+				z-index: 1000;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-between;
+				backdrop-filter: blur(15px);
+				border-right: 1px solid rgba(255, 255, 255, 0.1);
+				box-shadow: 4px 0 15px rgba(0, 0, 0, 0.2);
+			}
+
+			.sidebar.active {
+				left: 0;
+			}
+
+			/* 响应式调整 */
+			@media (max-width: 768px) {
+				.sidebar {
+					width: 200px;
+				}
+
+				.content {
+					padding: 20px;
+				}
+			}
+
+			.sidebar-footer {
+				color: white;
+				text-align: center;
+				padding: 20px 0;
+				border-top: 1px solid rgba(255, 255, 255, 0.1);
+			}
+
+			.nav-list {
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+			}
+
+			.nav-item a {
+				color: black;
+				text-decoration: none;
+				font-size: 18px;
+				padding: 10px;
+				display: block;
+				transition: 0.3s;
+				border-radius: 6px;
+			}
+
+			.nav-item a:hover {
+				background: rgba(255, 255, 255, 0.1);
+			}
+
+			/* 主内容区域 */
+			.main-content {
+				flex: 1;
+				padding: 20px;
+				margin-left: 0;
+				transition: 0.3s;
+			}
+
+			.content {
+				position: relative;
+				z-index: 1;
+				color: white;
+				min-height: 100vh;
+			}
+
+			/* 触发按钮 */
+			.toggle-btn {
+				position: fixed;
+				left: 20px;
+				top: 20px;
+				color: white;
+				font-size: 24px;
+				cursor: pointer;
+				z-index: 500;
+				backdrop-filter: blur(5px);
+				padding: 10px;
+				border-radius: 20%;
+				background-color: rgb(220, 220, 220);
+			}
+
+			.down-container {
+				text-align: center;
+				margin-top: 100px;
+			}
+
+			.down-btn {
+				background-color: coral;
+				color: #333;
+				border: none;
+				padding: 10px 20px;
+				cursor: pointer;
+				border-radius: 5px;
+				transition: all 0.3s ease;
+			}
+
+			.down-btn:hover {
+				background-color: orange;
+			}
+		</style>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+	</head>
+	<body>
+		<div class="container">
+			<div class="sidebar-mask" onclick="toggleSidebar()"></div>
+			<!-- 侧边导航栏 -->
+			<nav class="sidebar">
+				<ul class="nav-list">
+					<li class="nav-item"><a href="https://re99.top/"><i class="fas fa-home"></i> 主页</a></li>
+				</ul>
+				<div class="sidebar-footer">
+					<p style="color: rgba(255, 255, 255, 0.7)">Power By Html</p>
+				</div>
+			</nav>
+
+			<div class="toggle-btn" onclick="toggleSidebar()">
+				<i class="fas fa-bars"></i>
+			</div>
+
+			<main class="main-content">
+				<div class="content">
+					<h1>下载</h1>
+					<div class="down-container">
+						<button class="down-btn"><a href="./掉入异世界也要努力活下去.epub" download>EPUB</a></button>
+						<button class="down-btn"><a href="./掉入异世界也要努力活下去.txt" download>TXT</a></button>
+					</div>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>
