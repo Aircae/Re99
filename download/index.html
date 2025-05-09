@@ -179,6 +179,7 @@
 			<nav class="sidebar">
 				<ul class="nav-list">
 					<li class="nav-item"><a href="https://re99.top/"><i class="fas fa-home"></i> 主页</a></li>
+					<li class="nav-item"><a href="https://reader.re99.top/"><i class="fas fa-book"></i> 在线阅读</a></li>
 				</ul>
 				<div class="sidebar-footer">
 					<p style="color: rgba(255, 255, 255, 0.7)">Power By Html</p>
@@ -193,11 +194,62 @@
 				<div class="content">
 					<h1>下载</h1>
 					<div class="down-container">
-						<button class="down-btn"><a href="./掉入异世界也要努力活下去.epub" download>EPUB</a></button>
-						<button class="down-btn"><a href="./掉入异世界也要努力活下去.txt" download>TXT</a></button>
+						<button class="down-btn"><a href="99.epub" download>EPUB</a></button>
+						<button class="down-btn" onclick="downloadTXT()">TXT</button>
 					</div>
 				</div>
 			</main>
 		</div>
+		<script>
+			function toggleSidebar() {
+				const sidebar = document.querySelector('.sidebar');
+				const mask = document.querySelector('.sidebar-mask');
+		
+				sidebar.classList.toggle('active');
+		
+				// 统一通过CSS媒体查询控制遮罩层
+				mask.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+			}
+		
+			window.addEventListener('resize', () => {
+				const sidebar = document.querySelector('.sidebar');
+				const mask = document.querySelector('.sidebar-mask');
+		
+				// 保持响应式状态同步
+				if (window.innerWidth > 768) {
+					mask.style.display = 'none'; // 电脑端始终隐藏遮罩
+				} else {
+					mask.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+				}
+			});
+		
+			// 添加电脑端点击主内容关闭侧边栏
+			document.querySelector('.main-content').addEventListener('click', () => {
+				if (window.innerWidth > 768) {
+					document.querySelector('.sidebar').classList.remove('active');
+				}
+			});
+		
+			function downloadTXT() {
+				// 创建一个 Blob 对象，表示文件内容
+				const blob = new Blob(['文件内容'], {
+					type: 'text/plain'
+				});
+				// 创建一个对象 URL
+				const url = URL.createObjectURL(blob);
+				// 创建一个 <a> 标签
+				const a = document.createElement('a');
+				a.href = url;
+				a.download = '掉入异世界也要努力活下去.txt'; // 设置下载文件的名称
+				// 将 <a> 标签添加到 DOM 中
+				document.body.appendChild(a);
+				// 触发点击事件下载文件
+				a.click();
+				// 移除 <a> 标签
+				document.body.removeChild(a);
+				//释放对象URL
+				URL.revokeObjectURL(url);
+			}
+		</script>
 	</body>
 </html>
