@@ -34,7 +34,7 @@ body {
 }
 
 .blur-background {
-	width: 100%;
+	width: 100vw;
 	height: auto;
 	object-fit: cover;
 	filter: blur(5px);
@@ -53,15 +53,12 @@ body {
 	align-items: center;
 }
 
-/* 按钮样式 */
 .button {
 	margin-top: 20px;
-	/* 调整按钮与图片的距离 */
 }
 
 .button button {
 	background: linear-gradient(45deg, #8fd3f4, #6CC6CB);
-	/* 渐变背景 */
 	border: none;
 	color: white;
 	padding: 10px 20px;
@@ -72,44 +69,63 @@ body {
 	margin: 10px 5px;
 	cursor: pointer;
 	border-radius: 25px;
-	/* 圆角 */
 	transition: transform 0.3s, box-shadow 0.3s;
-	/* 添加过渡效果 */
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	/* 添加阴影 */
 }
 
 .button button:hover {
 	transform: translateY(-2px);
-	/* 鼠标悬停时上浮 */
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-	/* 增大阴影 */
 }
 
 .button button:active {
 	transform: translateY(0);
-	/* 点击时回到原位 */
 }
 
 .button a {
 	color: white;
-	/* 链接文字颜色 */
 	text-decoration: none;
-	/* 去掉下划线 */
 }
 
-#wx{
+#wx {
 	border-style: solid;
 	border-color: black;
 }
 
+#update {
+	color: black;
+	font-size: 20px
+}
+
 @media (max-width: 768px) {
 	.blur-background {
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
+		object-fit: cover;
 		filter: blur(5px);
 	}
-	body{
-		max-width: 768px;
+
+	body {
+		max-width: 100vw;
+		overflow-x: hidden;
+	}
+
+	.content {
+		padding: 1vw;
+	}
+
+	#wx {
+		width: 50vw;
+	}
+
+	#update {
+		color: white;
+		font-size: 20px
+	}
+}
+
+@media (max-width: 500px) {
+	#wx {
+		width: 75vw;
 	}
 }
